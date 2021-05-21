@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WeatherDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_ObserveData">
+          <Key>
+            <PropertyRef Name="ObserveId" />
+          </Key>
+          <Property Name="ObserveId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParameterId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Parameters">
+          <Key>
+            <PropertyRef Name="ParameterId" />
+          </Key>
+          <Property Name="ParameterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParameterName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="StationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Stations">
+          <Key>
+            <PropertyRef Name="StationId" />
+          </Key>
+          <Property Name="StationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StationName" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tbl_ObserveData_tbl_Parameters">
+          <End Role="tbl_Parameters" Type="Self.tbl_Parameters" Multiplicity="1" />
+          <End Role="tbl_ObserveData" Type="Self.tbl_ObserveData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Parameters">
+              <PropertyRef Name="ParameterId" />
+            </Principal>
+            <Dependent Role="tbl_ObserveData">
+              <PropertyRef Name="ParameterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Parameters_tbl_Stations">
+          <End Role="tbl_Stations" Type="Self.tbl_Stations" Multiplicity="1" />
+          <End Role="tbl_Parameters" Type="Self.tbl_Parameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Stations">
+              <PropertyRef Name="StationId" />
+            </Principal>
+            <Dependent Role="tbl_Parameters">
+              <PropertyRef Name="StationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WeatherDbModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ObserveData" EntityType="Self.tbl_ObserveData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Parameters" EntityType="Self.tbl_Parameters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Stations" EntityType="Self.tbl_Stations" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_ObserveData_tbl_Parameters" Association="Self.FK_tbl_ObserveData_tbl_Parameters">
+            <End Role="tbl_Parameters" EntitySet="tbl_Parameters" />
+            <End Role="tbl_ObserveData" EntitySet="tbl_ObserveData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Parameters_tbl_Stations" Association="Self.FK_tbl_Parameters_tbl_Stations">
+            <End Role="tbl_Stations" EntitySet="tbl_Stations" />
+            <End Role="tbl_Parameters" EntitySet="tbl_Parameters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WeatherDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Stations">
+          <Key>
+            <PropertyRef Name="StationId" />
+          </Key>
+          <Property Name="StationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StationName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Parameters" Relationship="WeatherDbModel.FK_tbl_Parameters_tbl_Stations" FromRole="tbl_Stations" ToRole="tbl_Parameters" />
+        </EntityType>
+        <EntityContainer Name="WeatherDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Stations" EntityType="Self.tbl_Stations" />
+          <EntitySet Name="sysdiagrams" EntityType="WeatherDbModel.sysdiagram" />
+          <EntitySet Name="tbl_ObserveData" EntityType="WeatherDbModel.tbl_ObserveData" />
+          <EntitySet Name="tbl_Parameters" EntityType="WeatherDbModel.tbl_Parameters" />
+          <AssociationSet Name="FK_tbl_ObserveData_tbl_Parameters" Association="WeatherDbModel.FK_tbl_ObserveData_tbl_Parameters">
+            <End Role="tbl_Parameters" EntitySet="tbl_Parameters" />
+            <End Role="tbl_ObserveData" EntitySet="tbl_ObserveData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Parameters_tbl_Stations" Association="WeatherDbModel.FK_tbl_Parameters_tbl_Stations">
+            <End Role="tbl_Stations" EntitySet="tbl_Stations" />
+            <End Role="tbl_Parameters" EntitySet="tbl_Parameters" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_ObserveData">
+          <Key>
+            <PropertyRef Name="ObserveId" />
+          </Key>
+          <Property Name="ObserveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParameterId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_Parameters" Relationship="WeatherDbModel.FK_tbl_ObserveData_tbl_Parameters" FromRole="tbl_ObserveData" ToRole="tbl_Parameters" />
+        </EntityType>
+        <EntityType Name="tbl_Parameters">
+          <Key>
+            <PropertyRef Name="ParameterId" />
+          </Key>
+          <Property Name="ParameterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParameterName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_ObserveData" Relationship="WeatherDbModel.FK_tbl_ObserveData_tbl_Parameters" FromRole="tbl_Parameters" ToRole="tbl_ObserveData" />
+          <NavigationProperty Name="tbl_Stations" Relationship="WeatherDbModel.FK_tbl_Parameters_tbl_Stations" FromRole="tbl_Parameters" ToRole="tbl_Stations" />
+        </EntityType>
+        <Association Name="FK_tbl_ObserveData_tbl_Parameters">
+          <End Type="WeatherDbModel.tbl_Parameters" Role="tbl_Parameters" Multiplicity="1" />
+          <End Type="WeatherDbModel.tbl_ObserveData" Role="tbl_ObserveData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Parameters">
+              <PropertyRef Name="ParameterId" />
+            </Principal>
+            <Dependent Role="tbl_ObserveData">
+              <PropertyRef Name="ParameterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Parameters_tbl_Stations">
+          <End Type="WeatherDbModel.tbl_Stations" Role="tbl_Stations" Multiplicity="1" />
+          <End Type="WeatherDbModel.tbl_Parameters" Role="tbl_Parameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Stations">
+              <PropertyRef Name="StationId" />
+            </Principal>
+            <Dependent Role="tbl_Parameters">
+              <PropertyRef Name="StationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WeatherDbModelStoreContainer" CdmEntityContainer="WeatherDbEntities">
+          <EntitySetMapping Name="tbl_Stations">
+            <EntityTypeMapping TypeName="WeatherDbModel.tbl_Stations">
+              <MappingFragment StoreEntitySet="tbl_Stations">
+                <ScalarProperty Name="StationId" ColumnName="StationId" />
+                <ScalarProperty Name="StationName" ColumnName="StationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WeatherDbModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ObserveData">
+            <EntityTypeMapping TypeName="WeatherDbModel.tbl_ObserveData">
+              <MappingFragment StoreEntitySet="tbl_ObserveData">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ParameterId" ColumnName="ParameterId" />
+                <ScalarProperty Name="ObserveId" ColumnName="ObserveId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Parameters">
+            <EntityTypeMapping TypeName="WeatherDbModel.tbl_Parameters">
+              <MappingFragment StoreEntitySet="tbl_Parameters">
+                <ScalarProperty Name="StationId" ColumnName="StationId" />
+                <ScalarProperty Name="ParameterName" ColumnName="ParameterName" />
+                <ScalarProperty Name="ParameterId" ColumnName="ParameterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -33,8 +33,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,11 +63,17 @@
     <Compile Include="Forms\AddEditStation.Designer.cs">
       <DependentUpon>AddEditStation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmUstan.cs">
+    <Compile Include="Forms\frmAddEditStation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmUstan.Designer.cs">
-      <DependentUpon>frmUstan.cs</DependentUpon>
+    <Compile Include="Forms\frmAddEditStation.Designer.cs">
+      <DependentUpon>frmAddEditStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmStations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmStations.Designer.cs">
+      <DependentUpon>frmStations.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -66,11 +83,46 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Weather.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ObserveData.cs">
+      <DependentUpon>Weather.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Parameters.cs">
+      <DependentUpon>Weather.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Stations.cs">
+      <DependentUpon>Weather.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Weather.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Weather.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Weather.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Weather.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Weather.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Weather.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="WeatherDbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WeatherDbDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\AddEditStation.resx">
       <DependentUpon>AddEditStation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmUstan.resx">
-      <DependentUpon>frmUstan.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmAddEditStation.resx">
+      <DependentUpon>frmAddEditStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmStations.resx">
+      <DependentUpon>frmStations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -85,6 +137,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,6 +147,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="Weather.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Weather.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Weather.edmx.diagram">
+      <DependentUpon>Weather.edmx</DependentUpon>
+    </None>
+    <None Include="WeatherDbDataSet.xsc">
+      <DependentUpon>WeatherDbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="WeatherDbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>WeatherDbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WeatherDbDataSet.xss">
+      <DependentUpon>WeatherDbDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -104,11 +175,24 @@
   <ItemGroup>
     <None Include="Resources\Mildura_Airport_Weatherstation.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="assets\cloudy %281%29.ico" />
     <Content Include="assets\New Project %281%29.jpg" />
     <Content Include="assets\New Project.jpg" />
+    <Content Include="assets\radio-station.ico" />
+    <Content Include="Weather.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Weather.edmx</DependentUpon>
+      <LastGenOutput>Weather.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Weather.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Weather.edmx</DependentUpon>
+      <LastGenOutput>Weather.cs</LastGenOutput>
+    </Content>
     <None Include="Resources\New Project.jpg" />
     <None Include="Resources\New Project %281%29.jpg" />
   </ItemGroup>

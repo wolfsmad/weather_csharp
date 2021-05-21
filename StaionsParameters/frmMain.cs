@@ -1,5 +1,4 @@
-﻿using StaionsParameters.BaseInfo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Weather;
 namespace StaionsParameters
 {
     public partial class frmMain : Form
@@ -18,16 +17,11 @@ namespace StaionsParameters
             InitializeComponent();
         }
 
-        private void tsmStation_Click(object sender, EventArgs e)
+        private void btnStationNew_Click(object sender, EventArgs e)
         {
-            var myForm = new AddEditStation();
-            myForm.Show();
-        }
-
-        private void picStation_Click(object sender, EventArgs e)
-        {
-            var myForm = new AddEditStation();
-            myForm.Show();
+            frmStations frm = new frmStations();
+            frm.ShowDialog();
+            
         }
     }
 }

@@ -12,3 +12,15 @@ C:\Users\wolf\documents\visual studio 2015\Projects\StaionsParameters\StaionsPar
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\StaionsParameters.exe.config
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.exe
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.pdb
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\StaionsParameters.exe
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\StaionsParameters.pdb
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.BaseInfo.AddEditStation.resources
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.frmMain.resources
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.Properties.Resources.resources
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.csproj.GenerateResource.Cache
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\Weather.frmStations.resources
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.Forms.frmAddEditStation.resources
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\EntityFramework.dll
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\EntityFramework.SqlServer.dll
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\EntityFramework.xml
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\EntityFramework.SqlServer.xml
