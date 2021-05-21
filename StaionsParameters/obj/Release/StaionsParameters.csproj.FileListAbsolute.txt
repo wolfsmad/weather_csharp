@@ -1,0 +1,12 @@
+C:\Users\wolf\documents\visual studio 2015\Projects\StaionsParameters\StaionsParameters\bin\Release\StaionsParameters.exe.config
+C:\Users\wolf\documents\visual studio 2015\Projects\StaionsParameters\StaionsParameters\bin\Release\StaionsParameters.exe
+C:\Users\wolf\documents\visual studio 2015\Projects\StaionsParameters\StaionsParameters\bin\Release\StaionsParameters.pdb
+C:\Users\wolf\documents\visual studio 2015\Projects\StaionsParameters\StaionsParameters\obj\Release\StaionsParameters.Form1.resources
+C:\Users\wolf\documents\visual studio 2015\Projects\StaionsParameters\StaionsParameters\obj\Release\StaionsParameters.Properties.Resources.resources
+C:\Users\wolf\documents\visual studio 2015\Projects\StaionsParameters\StaionsParameters\obj\Release\StaionsParameters.csproj.GenerateResource.Cache
+C:\Users\wolf\documents\visual studio 2015\Projects\StaionsParameters\StaionsParameters\obj\Release\StaionsParameters.exe
+C:\Users\wolf\documents\visual studio 2015\Projects\StaionsParameters\StaionsParameters\obj\Release\StaionsParameters.pdb
+C:\Users\wolf\documents\visual studio 2015\Projects\StaionsParameters\StaionsParameters\obj\Release\StaionsParameters.csprojResolveAssemblyReference.cache
+C:\Users\wolf\documents\visual studio 2015\Projects\StaionsParameters\StaionsParameters\obj\Release\StaionsParameters.BaseInfo.AddEditStation.resources
+C:\Users\wolf\documents\visual studio 2015\Projects\StaionsParameters\StaionsParameters\obj\Release\StaionsParameters.BaseInfo.frmUstan.resources
+C:\Users\wolf\documents\visual studio 2015\Projects\StaionsParameters\StaionsParameters\obj\Release\StaionsParameters.frmMain.resources
