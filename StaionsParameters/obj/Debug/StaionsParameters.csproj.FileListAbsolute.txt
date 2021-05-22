@@ -14,7 +14,6 @@ E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsP
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.pdb
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\StaionsParameters.exe
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\StaionsParameters.pdb
-E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.BaseInfo.AddEditStation.resources
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.frmMain.resources
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.Properties.Resources.resources
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.csproj.GenerateResource.Cache
@@ -24,3 +23,4 @@ E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\EntityFr
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\EntityFramework.SqlServer.dll
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\EntityFramework.xml
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\EntityFramework.SqlServer.xml
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.csprojResolveAssemblyReference.cache

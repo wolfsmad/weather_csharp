@@ -1,6 +1,6 @@
-﻿namespace Weather
+﻿namespace StaionsParameters.Forms
 {
-    partial class frmStations
+    partial class frmParameters
     {
         /// <summary>
         /// Required designer variable.
@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStations));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParameters));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.grdStation = new System.Windows.Forms.DataGridView();
-            this.stationIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stationNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grdParameter = new System.Windows.Forms.DataGridView();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.weatherDbDataSet = new StaionsParameters.WeatherDbDataSet();
             this.tbl_StationsTableAdapter = new StaionsParameters.WeatherDbDataSetTableAdapters.tbl_StationsTableAdapter();
             this.tblStationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.parameterIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.parameterNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cobStation = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdStation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdParameter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weatherDbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblStationsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -51,71 +51,35 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.cobStation);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtSearch);
-            this.groupBox1.Controls.Add(this.grdStation);
+            this.groupBox1.Controls.Add(this.grdParameter);
             this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Font = new System.Drawing.Font("B Nazanin", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.groupBox1.Location = new System.Drawing.Point(22, 12);
+            this.groupBox1.Location = new System.Drawing.Point(28, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.groupBox1.Size = new System.Drawing.Size(400, 302);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "ایستگاه";
+            this.groupBox1.Text = "خصوصیات";
             // 
-            // label1
+            // grdParameter
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("B Nazanin", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(349, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "جستجو";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("B Nazanin", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtSearch.Location = new System.Drawing.Point(175, 37);
-            this.txtSearch.MaxLength = 20;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(168, 28);
-            this.txtSearch.TabIndex = 0;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // grdStation
-            // 
-            this.grdStation.AllowUserToAddRows = false;
-            this.grdStation.AllowUserToDeleteRows = false;
-            this.grdStation.BackgroundColor = System.Drawing.Color.White;
-            this.grdStation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdStation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.stationIdDataGridViewTextBoxColumn,
-            this.stationNameDataGridViewTextBoxColumn});
-            this.grdStation.Location = new System.Drawing.Point(6, 82);
-            this.grdStation.Name = "grdStation";
-            this.grdStation.ReadOnly = true;
-            this.grdStation.Size = new System.Drawing.Size(383, 177);
-            this.grdStation.TabIndex = 4;
-            // 
-            // stationIdDataGridViewTextBoxColumn
-            // 
-            this.stationIdDataGridViewTextBoxColumn.DataPropertyName = "StationId";
-            this.stationIdDataGridViewTextBoxColumn.HeaderText = "شناسه";
-            this.stationIdDataGridViewTextBoxColumn.Name = "stationIdDataGridViewTextBoxColumn";
-            this.stationIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.stationIdDataGridViewTextBoxColumn.Width = 75;
-            // 
-            // stationNameDataGridViewTextBoxColumn
-            // 
-            this.stationNameDataGridViewTextBoxColumn.DataPropertyName = "StationName";
-            this.stationNameDataGridViewTextBoxColumn.HeaderText = "نام ایستگاه";
-            this.stationNameDataGridViewTextBoxColumn.Name = "stationNameDataGridViewTextBoxColumn";
-            this.stationNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.stationNameDataGridViewTextBoxColumn.Width = 300;
+            this.grdParameter.AllowUserToAddRows = false;
+            this.grdParameter.AllowUserToDeleteRows = false;
+            this.grdParameter.BackgroundColor = System.Drawing.Color.White;
+            this.grdParameter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdParameter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.parameterIdDataGridViewTextBoxColumn,
+            this.parameterNameDataGridViewTextBoxColumn});
+            this.grdParameter.Location = new System.Drawing.Point(6, 82);
+            this.grdParameter.Name = "grdParameter";
+            this.grdParameter.ReadOnly = true;
+            this.grdParameter.Size = new System.Drawing.Size(383, 177);
+            this.grdParameter.TabIndex = 4;
             // 
             // btnEdit
             // 
@@ -126,7 +90,6 @@
             this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "ویرایش";
             this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -137,7 +100,6 @@
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "حذف";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -148,7 +110,6 @@
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "افزودن";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // weatherDbDataSet
             // 
@@ -164,23 +125,58 @@
             this.tblStationsBindingSource.DataMember = "tbl_Stations";
             this.tblStationsBindingSource.DataSource = this.weatherDbDataSet;
             // 
-            // frmStations
+            // parameterIdDataGridViewTextBoxColumn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.parameterIdDataGridViewTextBoxColumn.DataPropertyName = "ParameterId";
+            this.parameterIdDataGridViewTextBoxColumn.HeaderText = "شناسه";
+            this.parameterIdDataGridViewTextBoxColumn.Name = "parameterIdDataGridViewTextBoxColumn";
+            this.parameterIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.parameterIdDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // parameterNameDataGridViewTextBoxColumn
+            // 
+            this.parameterNameDataGridViewTextBoxColumn.DataPropertyName = "ParameterName";
+            this.parameterNameDataGridViewTextBoxColumn.HeaderText = "نام خصوصیت";
+            this.parameterNameDataGridViewTextBoxColumn.Name = "parameterNameDataGridViewTextBoxColumn";
+            this.parameterNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.parameterNameDataGridViewTextBoxColumn.Width = 300;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("B Nazanin", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(333, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 20);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "نام ایستگاه";
+            // 
+            // cobStation
+            // 
+            this.cobStation.FormattingEnabled = true;
+            this.cobStation.Location = new System.Drawing.Point(157, 33);
+            this.cobStation.Name = "cobStation";
+            this.cobStation.Size = new System.Drawing.Size(156, 38);
+            this.cobStation.TabIndex = 5;
+            // 
+            // frmParameters
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 325);
+            this.ClientSize = new System.Drawing.Size(463, 323);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("B Nazanin", 14.25F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(7);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmStations";
+            this.Name = "frmParameters";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ایستگاه";
-            this.Load += new System.EventHandler(this.frmStations_Load);
+            this.Text = "خصوصیات ایستگاه ها";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdStation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdParameter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weatherDbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblStationsBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -190,16 +186,16 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.DataGridView grdStation;
+        private System.Windows.Forms.DataGridView grdParameter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn parameterIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn parameterNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
-        private StaionsParameters.WeatherDbDataSet weatherDbDataSet;
-        private StaionsParameters.WeatherDbDataSetTableAdapters.tbl_StationsTableAdapter tbl_StationsTableAdapter;
+        private WeatherDbDataSet weatherDbDataSet;
+        private WeatherDbDataSetTableAdapters.tbl_StationsTableAdapter tbl_StationsTableAdapter;
         private System.Windows.Forms.BindingSource tblStationsBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stationIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stationNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ComboBox cobStation;
+        private System.Windows.Forms.Label label1;
     }
 }

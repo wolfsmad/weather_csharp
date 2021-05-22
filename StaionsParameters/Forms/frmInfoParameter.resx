@@ -117,33 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="weatherDbDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <metadata name="DateDataGridViewTextBoxColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
-  <metadata name="tbl_StationsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>360, 17</value>
-  </metadata>
-  <metadata name="tblStationsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>171, 17</value>
+  <metadata name="ValueDataGridViewTextBoxColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAABAAEAEBAAAAEAIABUAwAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgDAAAAKC0PUwAAAAFz
-        UkdCAdnJLH8AAAAJcEhZcwAAAHYAAAB2AU57JggAAAGJUExURQAAAMrj+czi+M3k+s3k+8nj+cnk+/9h
-        cf5cbP9VYc3j+djr/8vj+szj+8bj/8vj+f9ebf5mdP5RYv1PYczi+8rk+8zk+sng98rj+f9AYPhRYv5P
-        YPFRYszj+czj+cjk9svi+8zM/wAAAGVYZp9WYFhYZc7n/8rk+cbj9lhYZ1dZZlhYZlhYZsTr/8jb/5m5
-        /5e5/5e4/5S3/1haZVhYZWBgYFhaZk1NZpe5/4Cq/4Cq/4CAgFlZZldZZltbZldaZbXQ/uTx/uDv/uHu
-        /pO3/lZaZVlZZlhYallZZk5iYldZZsTa/trs/Mvj+o+1/oGq/n+p/JSz9Je4/5a2/JSz9Ze4/pK2/5a6
-        /p3A/Zm9/YOt/32o/nWh+4Wu/4St/3yn/nSh+7nT/tDj/qTF/sjd/s3i/pO5/oCq/5eo4M+kks2klICq
-        /szk+qPE/dnq/ZW6/rymrv2kWv6oYYOq+4uy/oav/461/oOs//6lXv+qZJK1/7WktuOngd6qi4Kp+32o
-        /nai+4Cq/4Cq/7nXbc8AAACDdFJOUwBbIzhCUTmTrxUuDZN3Eoox//+RRkNoIYcI5v9rWoscewUBk01d
-        FYMbNHiTlg0O+fj424OcEIAK///IAqebLVj//////0dQHZ4NjP/////4+/j19vj1w/////////+y////
-        //////+o////////////////////////08fn46y21qps8DJ4/QAAANVJREFUeJxjYIAARgjFxAzls7Cy
-        MbBzcHJx80AFePn4BQSFhEVE+aECYuISklLSMrJcclABeQVFJWUVVUU1dagAgwaDppa2DoOuHoO+gSEQ
-        GDEwGJuYmpkDpSwsQcCKwdrG1tzOHiTg4Ojk7GLF4Orm7uHpBRLw9vH19fMPCAwKCg4JCQ1jsAiPiIyM
-        io6JhYA4qBnxCYlJyZYpqWnpDBYZmZlZ2fEJSTm5lnm++UCBgsKiouL4hBK/Ussyv3KQQEVlJVDAEgLS
-        Gaqqa2pr6+obGiGgCQBCQTY2xp2wTQAAAABJRU5ErkJggg==
+        AAABAAEAEBAAAAEAIAAtAgAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgDAAAAKC0PUwAAAAFz
+        UkdCAdnJLH8AAAAJcEhZcwAAAHYAAAB2AU57JggAAADeUExURQAAAPrZXvzRWfvZXPzOW//VVf7lYPvm
+        X//lX/3lXvvbXfe9WPjGWv/MXP+/YPa6V/e5V//mYfzlYP/jXv3lX/3lX/e6V/jCWfHGR/a7V/+zTfzl
+        X/TUkvHv2tnt9djs+N/y+f3lX/XhrvD6/9Xq9s7m9NLp9tn29v3lX/reafD6/tXq99jr99zr+v//gP/m
+        Wf3lXvzmZfbur9Dn9dvt+fzlX/3lX///VfzocPD59dXq9//lYfH7/8/n9PD6/9Pp9vH8/9zt+O/6//D6
+        //D6/9bq99Do9dDn9dXq9tvs+XzcW/gAAABKdFJOUwCjTa5UDLBGO9D//tUZCJNbMlg2+///8BJwCsP6
+        6e3NKPLz////+hva//vwwDMCFHf/4/5UxIkDpOTxHX7/l/dJkGHO7vv+/e+G3GBFUAAAAJJJREFUeJxj
+        YMAKGJnQBJhZ0ARYkdhs7AwcnFzcPLx8/AJgAUEhYRFRLjExcQlJKagaaVGggIysnLwCVEARKKCkrKyi
+        qqYOEdAQFdXUAgmoauvoMjDo6RuIGhopgwVUVY1NGEzNzC0slWECqlYM1gwMNsoIAVuQIXZIAvYgAQck
+        AUewPU7OLi4urm5u7h6emB4HADeHFD7fUWjGAAAAAElFTkSuQmCC
 </value>
   </data>
 </root>

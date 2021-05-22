@@ -57,17 +57,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\AddEditStation.cs">
+    <Compile Include="Forms\frmAddEditDate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddEditStation.Designer.cs">
-      <DependentUpon>AddEditStation.cs</DependentUpon>
+    <Compile Include="Forms\frmAddEditDate.Designer.cs">
+      <DependentUpon>frmAddEditDate.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmAddEditStation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmAddEditStation.Designer.cs">
       <DependentUpon>frmAddEditStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmInfoParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmInfoParameter.Designer.cs">
+      <DependentUpon>frmInfoParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmInfoStation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmInfoStation.Designer.cs">
+      <DependentUpon>frmInfoStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmParameters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmParameters.Designer.cs">
+      <DependentUpon>frmParameters.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmStations.cs">
       <SubType>Form</SubType>
@@ -115,11 +133,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WeatherDbDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\AddEditStation.resx">
-      <DependentUpon>AddEditStation.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmAddEditDate.resx">
+      <DependentUpon>frmAddEditDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddEditStation.resx">
       <DependentUpon>frmAddEditStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInfoParameter.resx">
+      <DependentUpon>frmInfoParameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInfoStation.resx">
+      <DependentUpon>frmInfoStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmParameters.resx">
+      <DependentUpon>frmParameters.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmStations.resx">
       <DependentUpon>frmStations.cs</DependentUpon>
