@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StaionsParameters.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,24 @@ namespace StaionsParameters
             frmStations frm = new frmStations();
             frm.ShowDialog();
             
+        }
+
+        private void btnPropertyNew_Click(object sender, EventArgs e)
+        {
+            frmParameters frm = new frmParameters();
+            frm.ShowDialog();
+        }
+
+        private void btnInfoStation_Click(object sender, EventArgs e)
+        {
+            frmInfoStation frm = new frmInfoStation();
+            frm.ShowDialog();
+        }
+
+        private void btnInfoProperty_Click(object sender, EventArgs e)
+        {
+            frmInfoParameter frm = new frmInfoParameter();
+            frm.ShowDialog();
         }
     }
 }

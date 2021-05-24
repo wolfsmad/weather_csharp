@@ -21,6 +21,9 @@
       <End Role="tbl_Stations" EntitySet="tbl_Stations" />
       <End Role="tbl_Parameters" EntitySet="tbl_Parameters" />
     </AssociationSet>
+    <FunctionImport Name="SP_InfoObserve" ReturnType="Collection(WeatherDbModel.SP_InfoObserve_Result)">
+      <Parameter Name="stationid" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="sysdiagram">
     <Key>
@@ -76,4 +79,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="SP_InfoObserve_Result">
+    <Property Type="String" Name="StationName" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="StationId" Nullable="false" />
+    <Property Type="Int32" Name="ParameterId" Nullable="false" />
+    <Property Type="String" Name="ParameterName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Date" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="ObserveId" Nullable="false" />
+    <Property Type="Int32" Name="Value" Nullable="false" />
+  </ComplexType>
 </Schema>

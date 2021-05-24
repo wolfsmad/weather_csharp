@@ -34,10 +34,10 @@ namespace StaionsParameters.Forms
         {
             if (txtStationName.Text.Length <= 2)
             {
-                MessageBox.Show("خطا", "نام ایستگاه نامعتبر می باشد.", MessageBoxButtons.OK);
+                MessageBox.Show("نام ایستگاه نامعتبر می باشد.", "خطا", MessageBoxButtons.OK);
                 return;
             }
-            if (MessageBox.Show("پیغام", "آیا از ثبت اطلاعات اطمینان دارید؟", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("آیا از ثبت اطلاعات اطمینان دارید؟", "پیغام", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 if (id != 0)
                 {
@@ -48,7 +48,7 @@ namespace StaionsParameters.Forms
                     }
                     else
                     {
-                        MessageBox.Show("خطا", "عملیات ناموفق به پایان رسید", MessageBoxButtons.OK);
+                        MessageBox.Show("عملیات ناموفق به پایان رسید", "خطا", MessageBoxButtons.OK);
                         return;
                     }
                 }
@@ -61,7 +61,7 @@ namespace StaionsParameters.Forms
                     }
                     else
                     {
-                        MessageBox.Show("خطا", "عملیات ناموفق به پایان رسید", MessageBoxButtons.OK);
+                        MessageBox.Show("عملیات ناموفق به پایان رسید", "خطا", MessageBoxButtons.OK);
                         return;
                     }
 

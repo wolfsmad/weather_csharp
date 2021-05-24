@@ -24,3 +24,9 @@ E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\EntityFr
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\EntityFramework.xml
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\EntityFramework.SqlServer.xml
 E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.csprojResolveAssemblyReference.cache
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.Forms.frmInfoParameter.resources
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.Forms.frmInfoStation.resources
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.Forms.frmParameters.resources
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.Forms.frmAddEditParameter.resources
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\bin\Debug\BPersianCalender.dll
+E:\project\daneshBonyan\code\weather_csharp\StaionsParameters\obj\Debug\StaionsParameters.Forms.frmAddEditInfoStation.resources

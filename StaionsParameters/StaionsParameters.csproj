@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BPersianCalender, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -57,11 +58,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\frmAddEditDate.cs">
+    <Compile Include="Forms\frmAddEditInfoStation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmAddEditDate.Designer.cs">
-      <DependentUpon>frmAddEditDate.cs</DependentUpon>
+    <Compile Include="Forms\frmAddEditInfoStation.Designer.cs">
+      <DependentUpon>frmAddEditInfoStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddEditParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddEditParameter.Designer.cs">
+      <DependentUpon>frmAddEditParameter.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmAddEditStation.cs">
       <SubType>Form</SubType>
@@ -101,6 +108,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SP_InfoObserve_Result.cs">
+      <DependentUpon>Weather.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Weather.tt</DependentUpon>
     </Compile>
@@ -133,8 +143,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WeatherDbDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\frmAddEditDate.resx">
-      <DependentUpon>frmAddEditDate.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmAddEditInfoStation.resx">
+      <DependentUpon>frmAddEditInfoStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddEditParameter.resx">
+      <DependentUpon>frmAddEditParameter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddEditStation.resx">
       <DependentUpon>frmAddEditStation.cs</DependentUpon>
@@ -210,6 +223,7 @@
     <Content Include="assets\New Project %281%29.jpg" />
     <Content Include="assets\New Project.jpg" />
     <Content Include="assets\radio-station.ico" />
+    <Content Include="BPersianCalender.dll" />
     <Content Include="Weather.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Weather.edmx</DependentUpon>

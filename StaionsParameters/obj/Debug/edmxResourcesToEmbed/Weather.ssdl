@@ -58,6 +58,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="SP_InfoObserve" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="stationid" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="WeatherDbModelStoreContainer">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_ObserveData" EntityType="Self.tbl_ObserveData" Schema="dbo" store:Type="Tables" />

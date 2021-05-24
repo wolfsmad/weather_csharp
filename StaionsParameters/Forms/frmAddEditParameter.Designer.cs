@@ -1,6 +1,6 @@
 ﻿namespace StaionsParameters.Forms
 {
-    partial class frmAddEditStation
+    partial class frmAddEditParameter
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditStation));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditParameter));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtStationName = new System.Windows.Forms.TextBox();
+            this.txtParameterName = new System.Windows.Forms.TextBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,33 +40,34 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.txtStationName);
+            this.groupBox1.Controls.Add(this.txtParameterName);
             this.groupBox1.Controls.Add(this.btnBack);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("B Nazanin", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(14, 15);
+            this.groupBox1.Location = new System.Drawing.Point(12, 15);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.groupBox1.Size = new System.Drawing.Size(352, 144);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
-            // txtStationName
+            // txtParameterName
             // 
-            this.txtStationName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtStationName.Location = new System.Drawing.Point(53, 23);
-            this.txtStationName.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.txtStationName.Name = "txtStationName";
-            this.txtStationName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtStationName.Size = new System.Drawing.Size(199, 28);
-            this.txtStationName.TabIndex = 2;
+            this.txtParameterName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtParameterName.Location = new System.Drawing.Point(67, 33);
+            this.txtParameterName.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtParameterName.MaxLength = 10;
+            this.txtParameterName.Name = "txtParameterName";
+            this.txtParameterName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtParameterName.Size = new System.Drawing.Size(199, 28);
+            this.txtParameterName.TabIndex = 2;
             // 
             // btnBack
             // 
             this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack.Location = new System.Drawing.Point(53, 77);
+            this.btnBack.Location = new System.Drawing.Point(67, 77);
             this.btnBack.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(87, 33);
@@ -78,7 +79,7 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(167, 77);
+            this.btnAdd.Location = new System.Drawing.Point(164, 77);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(85, 33);
@@ -91,27 +92,29 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(262, 26);
+            this.label1.Location = new System.Drawing.Point(272, 36);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 20);
+            this.label1.Size = new System.Drawing.Size(70, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "نام ایستگاه";
+            this.label1.Text = "نام خصوصیت";
             // 
-            // frmAddEditStation
+            // frmAddEditParameter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 168);
+            this.ClientSize = new System.Drawing.Size(378, 175);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("B Nazanin", 9.75F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmAddEditStation";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "مدیریت ایستگاه";
-            this.Load += new System.EventHandler(this.frmAddEditStation_Load);
+            this.Name = "frmAddEditParameter";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "مدیریت خصوصیات";
+            this.Load += new System.EventHandler(this.frmAddEditParameter_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -121,7 +124,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtStationName;
+        private System.Windows.Forms.TextBox txtParameterName;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label1;

@@ -12,6 +12,8 @@ namespace StaionsParameters
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class WeatherDbEntities : DbContext
     {
@@ -29,5 +31,14 @@ namespace StaionsParameters
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tbl_ObserveData> tbl_ObserveData { get; set; }
         public virtual DbSet<tbl_Parameters> tbl_Parameters { get; set; }
+    
+        public virtual ObjectResult<SP_InfoObserve_Result> SP_InfoObserve(Nullable<int> stationid)
+        {
+            var stationidParameter = stationid.HasValue ?
+                new ObjectParameter("stationid", stationid) :
+                new ObjectParameter("stationid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_InfoObserve_Result>("SP_InfoObserve", stationidParameter);
+        }
     }
 }

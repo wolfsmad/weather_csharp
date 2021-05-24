@@ -39,5 +39,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_InfoObserve" FunctionName="WeatherDbModel.Store.SP_InfoObserve">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WeatherDbModel.SP_InfoObserve_Result">
+          <ScalarProperty Name="StationName" ColumnName="StationName" />
+          <ScalarProperty Name="StationId" ColumnName="StationId" />
+          <ScalarProperty Name="ParameterId" ColumnName="ParameterId" />
+          <ScalarProperty Name="ParameterName" ColumnName="ParameterName" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ObserveId" ColumnName="ObserveId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>
