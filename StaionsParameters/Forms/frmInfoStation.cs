@@ -19,6 +19,7 @@ namespace StaionsParameters.Forms
         private void frmInfoStation_Load(object sender, EventArgs e)
         {
             FillCmb();
+            cmbStations.SelectedIndex = -1;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -63,18 +64,19 @@ namespace StaionsParameters.Forms
                 return;
             }
 
-            if (MessageBox.Show("آیا از حذف اطلاعات مورد نظر اطمینان دارید ؟", "پیغام", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show("آیا از ویرایش اطلاعات  اطمینان دارید ؟", "پیغام", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 return;
-
             }
             int stationid = (int)cmbStations.SelectedValue;
             int observeid = (int)grdInfoStation.CurrentRow.Cells[0].Value;
-            int parameterid = (int)grdInfoStation.CurrentRow.Cells[1].Value;
+            int setparameterid = (int)grdInfoStation.CurrentRow.Cells[1].Value;
             int value = (int)grdInfoStation.CurrentRow.Cells[4].Value;
             string date = grdInfoStation.CurrentRow.Cells[5].Value.ToString();
 
-            frmAddEditInfoStation frm = new frmAddEditInfoStation((int)ActionType.Edit, stationid: stationid, observeid: observeid, parameterid: parameterid
+            frmAddEditInfoStation frm = new frmAddEditInfoStation((int)ActionType.Edit, stationid: stationid,
+                observeid: observeid,
+                setparameterid: setparameterid
                 , date: date, value: value);
             frm.ShowDialog();
             FillGrid(stationid);
@@ -84,6 +86,11 @@ namespace StaionsParameters.Forms
         {
             try
             {
+                if (cmbStations.SelectedIndex == -1)
+                {
+                    FillGrid(0);
+                    return;
+                }
                 int id = (int)cmbStations.SelectedValue;
                 FillGrid(id);
             }
@@ -99,17 +106,19 @@ namespace StaionsParameters.Forms
         {
             WeatherDbEntities mybank = new WeatherDbEntities();
             var listjoin = (from a in mybank.tbl_ObserveData
-                            join b in mybank.tbl_Parameters
-                            on a.ParameterId equals b.ParameterId
-                            join c in mybank.tbl_Stations
-                            on b.StationId equals c.StationId
-                            where c.StationId == id
+                            join b in mybank.tbl_SetParameter
+                            on a.SetParameterId equals b.SetParameterId
+                            join c in mybank.tbl_Parameter
+                            on b.ParameterId equals c.ParameterId
+                            join d in mybank.tbl_Stations
+                            on b.StationId equals d.StationId
+                            where b.StationId == id
                             select new
                             {
                                 a.ObserveId,
-                                a.ParameterId,
+                                a.SetParameterId,
                                 b.StationId,
-                                b.ParameterName,
+                                c.ParameterName,
                                 a.Value,
                                 a.Date
                             }).ToList();
@@ -125,6 +134,8 @@ namespace StaionsParameters.Forms
             cmbStations.ValueMember = "StationId";
             cmbStations.DisplayMember = "StationName";
             cmbStations.SelectedIndex = -1;
+            cmbStations.SelectedIndex = -1;
+
         }
         private bool Delete(int id)
         {

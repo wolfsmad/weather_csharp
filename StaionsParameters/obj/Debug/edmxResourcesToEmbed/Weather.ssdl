@@ -15,17 +15,24 @@
       <PropertyRef Name="ObserveId" />
     </Key>
     <Property Name="ObserveId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ParameterId" Type="int" Nullable="false" />
+    <Property Name="SetParameterId" Type="int" Nullable="false" />
     <Property Name="Date" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="Value" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="tbl_Parameters">
+  <EntityType Name="tbl_Parameter">
     <Key>
       <PropertyRef Name="ParameterId" />
     </Key>
     <Property Name="ParameterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ParameterName" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="StationId" Type="int" Nullable="false" />
+    <Property Name="ParameterName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_SetParameter">
+    <Key>
+      <PropertyRef Name="SetParameterId" />
+    </Key>
+    <Property Name="SetParameterId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ParameterId" Type="int" />
+    <Property Name="StationId" Type="int" />
   </EntityType>
   <EntityType Name="tbl_Stations">
     <Key>
@@ -34,26 +41,38 @@
     <Property Name="StationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StationName" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
-  <Association Name="FK_tbl_ObserveData_tbl_Parameters">
-    <End Role="tbl_Parameters" Type="Self.tbl_Parameters" Multiplicity="1" />
+  <Association Name="FK_tbl_ObserveData_tbl_SetParameter">
+    <End Role="tbl_SetParameter" Type="Self.tbl_SetParameter" Multiplicity="1" />
     <End Role="tbl_ObserveData" Type="Self.tbl_ObserveData" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tbl_Parameters">
-        <PropertyRef Name="ParameterId" />
+      <Principal Role="tbl_SetParameter">
+        <PropertyRef Name="SetParameterId" />
       </Principal>
       <Dependent Role="tbl_ObserveData">
+        <PropertyRef Name="SetParameterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_SetParameter_tbl_Parameter">
+    <End Role="tbl_Parameter" Type="Self.tbl_Parameter" Multiplicity="0..1" />
+    <End Role="tbl_SetParameter" Type="Self.tbl_SetParameter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Parameter">
+        <PropertyRef Name="ParameterId" />
+      </Principal>
+      <Dependent Role="tbl_SetParameter">
         <PropertyRef Name="ParameterId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tbl_Parameters_tbl_Stations">
-    <End Role="tbl_Stations" Type="Self.tbl_Stations" Multiplicity="1" />
-    <End Role="tbl_Parameters" Type="Self.tbl_Parameters" Multiplicity="*" />
+  <Association Name="FK_tbl_SetParameter_tbl_Stations">
+    <End Role="tbl_Stations" Type="Self.tbl_Stations" Multiplicity="0..1" />
+    <End Role="tbl_SetParameter" Type="Self.tbl_SetParameter" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tbl_Stations">
         <PropertyRef Name="StationId" />
       </Principal>
-      <Dependent Role="tbl_Parameters">
+      <Dependent Role="tbl_SetParameter">
         <PropertyRef Name="StationId" />
       </Dependent>
     </ReferentialConstraint>
@@ -64,15 +83,20 @@
   <EntityContainer Name="WeatherDbModelStoreContainer">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_ObserveData" EntityType="Self.tbl_ObserveData" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbl_Parameters" EntityType="Self.tbl_Parameters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Parameter" EntityType="Self.tbl_Parameter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_SetParameter" EntityType="Self.tbl_SetParameter" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Stations" EntityType="Self.tbl_Stations" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_tbl_ObserveData_tbl_Parameters" Association="Self.FK_tbl_ObserveData_tbl_Parameters">
-      <End Role="tbl_Parameters" EntitySet="tbl_Parameters" />
+    <AssociationSet Name="FK_tbl_ObserveData_tbl_SetParameter" Association="Self.FK_tbl_ObserveData_tbl_SetParameter">
+      <End Role="tbl_SetParameter" EntitySet="tbl_SetParameter" />
       <End Role="tbl_ObserveData" EntitySet="tbl_ObserveData" />
     </AssociationSet>
-    <AssociationSet Name="FK_tbl_Parameters_tbl_Stations" Association="Self.FK_tbl_Parameters_tbl_Stations">
+    <AssociationSet Name="FK_tbl_SetParameter_tbl_Parameter" Association="Self.FK_tbl_SetParameter_tbl_Parameter">
+      <End Role="tbl_Parameter" EntitySet="tbl_Parameter" />
+      <End Role="tbl_SetParameter" EntitySet="tbl_SetParameter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_SetParameter_tbl_Stations" Association="Self.FK_tbl_SetParameter_tbl_Stations">
       <End Role="tbl_Stations" EntitySet="tbl_Stations" />
-      <End Role="tbl_Parameters" EntitySet="tbl_Parameters" />
+      <End Role="tbl_SetParameter" EntitySet="tbl_SetParameter" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

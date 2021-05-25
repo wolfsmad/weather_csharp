@@ -1,14 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="WeatherDbModelStoreContainer" CdmEntityContainer="WeatherDbEntities">
-    <EntitySetMapping Name="tbl_Stations">
-      <EntityTypeMapping TypeName="WeatherDbModel.tbl_Stations">
-        <MappingFragment StoreEntitySet="tbl_Stations">
-          <ScalarProperty Name="StationId" ColumnName="StationId" />
+    <FunctionImportMapping FunctionImportName="SP_InfoObserve" FunctionName="WeatherDbModel.Store.SP_InfoObserve">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WeatherDbModel.SP_InfoObserve_Result">
           <ScalarProperty Name="StationName" ColumnName="StationName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+          <ScalarProperty Name="StationId" ColumnName="StationId" />
+          <ScalarProperty Name="ParameterId" ColumnName="ParameterId" />
+          <ScalarProperty Name="ParameterName" ColumnName="ParameterName" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ObserveId" ColumnName="ObserveId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="WeatherDbModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -25,32 +30,35 @@
         <MappingFragment StoreEntitySet="tbl_ObserveData">
           <ScalarProperty Name="Value" ColumnName="Value" />
           <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="ParameterId" ColumnName="ParameterId" />
+          <ScalarProperty Name="SetParameterId" ColumnName="SetParameterId" />
           <ScalarProperty Name="ObserveId" ColumnName="ObserveId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_Parameters">
-      <EntityTypeMapping TypeName="WeatherDbModel.tbl_Parameters">
-        <MappingFragment StoreEntitySet="tbl_Parameters">
-          <ScalarProperty Name="StationId" ColumnName="StationId" />
+    <EntitySetMapping Name="tbl_Parameter">
+      <EntityTypeMapping TypeName="WeatherDbModel.tbl_Parameter">
+        <MappingFragment StoreEntitySet="tbl_Parameter">
           <ScalarProperty Name="ParameterName" ColumnName="ParameterName" />
           <ScalarProperty Name="ParameterId" ColumnName="ParameterId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="SP_InfoObserve" FunctionName="WeatherDbModel.Store.SP_InfoObserve">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="WeatherDbModel.SP_InfoObserve_Result">
+    <EntitySetMapping Name="tbl_SetParameter">
+      <EntityTypeMapping TypeName="WeatherDbModel.tbl_SetParameter">
+        <MappingFragment StoreEntitySet="tbl_SetParameter">
+          <ScalarProperty Name="StationId" ColumnName="StationId" />
+          <ScalarProperty Name="ParameterId" ColumnName="ParameterId" />
+          <ScalarProperty Name="SetParameterId" ColumnName="SetParameterId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Stations">
+      <EntityTypeMapping TypeName="WeatherDbModel.tbl_Stations">
+        <MappingFragment StoreEntitySet="tbl_Stations">
           <ScalarProperty Name="StationName" ColumnName="StationName" />
           <ScalarProperty Name="StationId" ColumnName="StationId" />
-          <ScalarProperty Name="ParameterId" ColumnName="ParameterId" />
-          <ScalarProperty Name="ParameterName" ColumnName="ParameterName" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="ObserveId" ColumnName="ObserveId" />
-          <ScalarProperty Name="Value" ColumnName="Value" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

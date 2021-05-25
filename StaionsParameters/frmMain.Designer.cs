@@ -35,8 +35,9 @@
             this.btnInfoProperty = new System.Windows.Forms.ToolStripMenuItem();
             this.خصوصیتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnStationNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnPropertyNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnInsertParameter = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSetParameter = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +59,8 @@
             // 
             this.tsmStation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnInfoStation,
-            this.btnInfoProperty});
+            this.btnInfoProperty,
+            this.btnSetParameter});
             this.tsmStation.Font = new System.Drawing.Font("B Yekan", 12F);
             this.tsmStation.Name = "tsmStation";
             this.tsmStation.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -84,7 +86,7 @@
             // 
             this.خصوصیتToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnStationNew,
-            this.btnPropertyNew});
+            this.btnInsertParameter});
             this.خصوصیتToolStripMenuItem.Font = new System.Drawing.Font("B Yekan", 12F);
             this.خصوصیتToolStripMenuItem.Name = "خصوصیتToolStripMenuItem";
             this.خصوصیتToolStripMenuItem.Size = new System.Drawing.Size(92, 28);
@@ -93,21 +95,28 @@
             // btnStationNew
             // 
             this.btnStationNew.Name = "btnStationNew";
-            this.btnStationNew.Size = new System.Drawing.Size(178, 28);
+            this.btnStationNew.Size = new System.Drawing.Size(165, 28);
             this.btnStationNew.Text = "تعریف ایستگاه";
             this.btnStationNew.Click += new System.EventHandler(this.btnStationNew_Click);
             // 
-            // btnPropertyNew
+            // btnInsertParameter
             // 
-            this.btnPropertyNew.Name = "btnPropertyNew";
-            this.btnPropertyNew.Size = new System.Drawing.Size(178, 28);
-            this.btnPropertyNew.Text = "تعریف خصوصیت";
-            this.btnPropertyNew.Click += new System.EventHandler(this.btnPropertyNew_Click);
+            this.btnInsertParameter.Name = "btnInsertParameter";
+            this.btnInsertParameter.Size = new System.Drawing.Size(165, 28);
+            this.btnInsertParameter.Text = "تعریف پارامتر";
+            this.btnInsertParameter.Click += new System.EventHandler(this.btnInsertParameter_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 28);
+            // 
+            // btnSetParameter
+            // 
+            this.btnSetParameter.Name = "btnSetParameter";
+            this.btnSetParameter.Size = new System.Drawing.Size(239, 28);
+            this.btnSetParameter.Text = "تخصیص پارامتر به ایستگاه";
+            this.btnSetParameter.Click += new System.EventHandler(this.btnSetParameter_Click);
             // 
             // frmMain
             // 
@@ -137,6 +146,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnInfoStation;
         private System.Windows.Forms.ToolStripMenuItem btnInfoProperty;
         private System.Windows.Forms.ToolStripMenuItem btnStationNew;
-        private System.Windows.Forms.ToolStripMenuItem btnPropertyNew;
+        private System.Windows.Forms.ToolStripMenuItem btnInsertParameter;
+        private System.Windows.Forms.ToolStripMenuItem btnSetParameter;
     }
 }

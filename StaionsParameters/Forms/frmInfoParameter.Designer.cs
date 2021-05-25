@@ -33,13 +33,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.grdInfoParameter = new System.Windows.Forms.DataGridView();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.observeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StationNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdInfoParameter)).BeginInit();
             this.SuspendLayout();
@@ -53,6 +53,7 @@
             this.cmbParameter.Name = "cmbParameter";
             this.cmbParameter.Size = new System.Drawing.Size(156, 31);
             this.cmbParameter.TabIndex = 5;
+            this.cmbParameter.SelectedIndexChanged += new System.EventHandler(this.cmbParameter_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -101,36 +102,6 @@
             this.grdInfoParameter.Size = new System.Drawing.Size(518, 177);
             this.grdInfoParameter.TabIndex = 4;
             // 
-            // observeIdDataGridViewTextBoxColumn
-            // 
-            this.observeIdDataGridViewTextBoxColumn.DataPropertyName = "ObserveId";
-            this.observeIdDataGridViewTextBoxColumn.HeaderText = "شناسه";
-            this.observeIdDataGridViewTextBoxColumn.Name = "observeIdDataGridViewTextBoxColumn";
-            this.observeIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.observeIdDataGridViewTextBoxColumn.Width = 75;
-            // 
-            // DateDataGridViewTextBoxColumn
-            // 
-            this.DateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.DateDataGridViewTextBoxColumn.HeaderText = "تاریخ";
-            this.DateDataGridViewTextBoxColumn.Name = "DateDataGridViewTextBoxColumn";
-            this.DateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // StationNameDataGridViewTextBoxColumn
-            // 
-            this.StationNameDataGridViewTextBoxColumn.DataPropertyName = "StationName";
-            this.StationNameDataGridViewTextBoxColumn.HeaderText = "نام ایستگاه";
-            this.StationNameDataGridViewTextBoxColumn.Name = "StationNameDataGridViewTextBoxColumn";
-            this.StationNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.StationNameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // ValueDataGridViewTextBoxColumn
-            // 
-            this.ValueDataGridViewTextBoxColumn.DataPropertyName = "Value";
-            this.ValueDataGridViewTextBoxColumn.HeaderText = "مقدار";
-            this.ValueDataGridViewTextBoxColumn.Name = "ValueDataGridViewTextBoxColumn";
-            this.ValueDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -167,6 +138,36 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // observeIdDataGridViewTextBoxColumn
+            // 
+            this.observeIdDataGridViewTextBoxColumn.DataPropertyName = "ObserveId";
+            this.observeIdDataGridViewTextBoxColumn.HeaderText = "شناسه";
+            this.observeIdDataGridViewTextBoxColumn.Name = "observeIdDataGridViewTextBoxColumn";
+            this.observeIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.observeIdDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // DateDataGridViewTextBoxColumn
+            // 
+            this.DateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.DateDataGridViewTextBoxColumn.HeaderText = "تاریخ";
+            this.DateDataGridViewTextBoxColumn.Name = "DateDataGridViewTextBoxColumn";
+            this.DateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // StationNameDataGridViewTextBoxColumn
+            // 
+            this.StationNameDataGridViewTextBoxColumn.DataPropertyName = "StationName";
+            this.StationNameDataGridViewTextBoxColumn.HeaderText = "نام ایستگاه";
+            this.StationNameDataGridViewTextBoxColumn.Name = "StationNameDataGridViewTextBoxColumn";
+            this.StationNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.StationNameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // ValueDataGridViewTextBoxColumn
+            // 
+            this.ValueDataGridViewTextBoxColumn.DataPropertyName = "Value";
+            this.ValueDataGridViewTextBoxColumn.HeaderText = "مقدار";
+            this.ValueDataGridViewTextBoxColumn.Name = "ValueDataGridViewTextBoxColumn";
+            this.ValueDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // frmInfoParameter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
@@ -182,6 +183,7 @@
             this.Name = "frmInfoParameter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "اطلاعات بر اساس خصوصیات";
+            this.Load += new System.EventHandler(this.frmInfoParameter_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdInfoParameter)).EndInit();

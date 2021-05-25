@@ -16,9 +16,9 @@ namespace StaionsParameters.Forms
         Insert = 1,
         Edit = 2
     }
-    public partial class frmParameters : Form
+    public partial class frmSetParameters : Form
     {
-        public frmParameters()
+        public frmSetParameters()
         {
             InitializeComponent();
         }
@@ -30,12 +30,12 @@ namespace StaionsParameters.Forms
         {
             if (cmbStations.SelectedIndex > -1)
             {
-                int id = (int)cmbStations.SelectedValue;
-                frmAddEditParameter frm = new frmAddEditParameter(id, (int)ActionType.Insert);
+                int stationid = (int)cmbStations.SelectedValue;
+                frmAddEditSetParameter frm = new frmAddEditSetParameter((int)ActionType.Insert,stationId: stationid);
                 frm.ShowDialog();
                 //if (frm.DialogResult == DialogResult.OK)
                 //{
-                    FillGrid(id);
+                    FillGrid(stationid);
                 //}
             }
             else
@@ -60,9 +60,10 @@ namespace StaionsParameters.Forms
             if (cmbStations.SelectedIndex > -1 && grdParameter.RowCount > 0)
             {
                 int stationid = (int)cmbStations.SelectedValue;
-                int id = (int)grdParameter.CurrentRow.Cells[0].Value;
-                string name = grdParameter.CurrentRow.Cells[1].Value.ToString();
-                frmAddEditParameter frm = new frmAddEditParameter(id, (int)ActionType.Edit, name);
+                int setParameterId = (int)(int)grdParameter.CurrentRow.Cells[0].Value;
+                int parameterid = (int)grdParameter.CurrentRow.Cells[1].Value;
+
+                frmAddEditSetParameter frm = new frmAddEditSetParameter( (int)ActionType.Edit, setParameterId, stationid, parameterid);
                 frm.ShowDialog();
                 FillGrid(stationid);
             }
@@ -77,12 +78,12 @@ namespace StaionsParameters.Forms
             {
                 if (MessageBox.Show("آیا از حذف پارامتر مورد نظر اطمینان دارید ؟", "پیغام", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    int id = (int)grdParameter.CurrentRow.Cells[0].Value;
-                    int stationid = (int)cmbStations.SelectedValue;
-                    if (Delete(id))
+                    int setParameterid = (int)grdParameter.CurrentRow.Cells[0].Value;
+                    
+                    if (Delete(setParameterid))
                     {
                         MessageBox.Show("عملیات حذف با موفقیت به پایان رسید","پیغام");
-                        FillGrid(stationid);
+                        FillGrid((int)cmbStations.SelectedValue);
                     }
                     else
                     {
@@ -93,15 +94,15 @@ namespace StaionsParameters.Forms
             }
         }
         #region Methods
-        private bool Delete(int id)
+        private bool Delete(int setParameterid)
         {
             try
             {
                 WeatherDbEntities mybank = new WeatherDbEntities();
-                var item = (from x in mybank.tbl_Parameters
-                            where x.ParameterId == id
+                var item = (from x in mybank.tbl_SetParameter
+                            where x.SetParameterId == setParameterid
                             select x).SingleOrDefault();
-                mybank.tbl_Parameters.Remove(item);
+                mybank.tbl_SetParameter.Remove(item);
                 mybank.SaveChanges();
                 return true;
             }
@@ -125,12 +126,17 @@ namespace StaionsParameters.Forms
         private void FillGrid(int id)
         {
             WeatherDbEntities mybank = new WeatherDbEntities();
-            var list = (from x in mybank.tbl_Parameters
+            var list = (from x in mybank.tbl_SetParameter
+                        join a in mybank.tbl_Parameter
+                        on x.ParameterId equals a.ParameterId
                         where x.StationId == id
                         select new {
                             x.ParameterId,
-                            x.ParameterName
+                            x.SetParameterId,
+                            a.ParameterName,
+
                         }).ToList();
+            grdParameter.AutoGenerateColumns = false;
             grdParameter.DataSource = list;
         }
         #endregion

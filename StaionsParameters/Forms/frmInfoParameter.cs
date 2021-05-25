@@ -17,6 +17,21 @@ namespace StaionsParameters.Forms
             InitializeComponent();
         }
 
+        private void frmInfoParameter_Load(object sender, EventArgs e)
+        {
+            FillCmb();
+        }
+        private void cmbParameter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = (int)cmbParameter.SelectedValue;
+                FillGrid(id);
+            }
+            catch (Exception)
+            {
+            }
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (cmbParameter.SelectedIndex == -1)
@@ -24,6 +39,13 @@ namespace StaionsParameters.Forms
                 MessageBox.Show("لطفا یک خصوصیت انتخاب نمایید", "پیغام");
                 return;
             }
+
+            int parameterid = (int)cmbParameter.SelectedValue;
+            string ParameterName = cmbParameter.Text;
+            string StationName = grdInfoParameter.CurrentRow.Cells[2].Value.ToString();
+            frmAddEditInfoParameter frm = new frmAddEditInfoParameter((int)ActionType.Insert, parameterid, StationName, ParameterName);
+            frm.ShowDialog();
+            FillGrid(parameterid);
 
         }
 
@@ -78,17 +100,20 @@ namespace StaionsParameters.Forms
         {
             WeatherDbEntities mybank = new WeatherDbEntities();
             var listjoin = (from a in mybank.tbl_ObserveData
-                            join b in mybank.tbl_Parameters
-                            on a.ParameterId equals b.ParameterId
-                            join c in mybank.tbl_Stations
-                            on b.StationId equals c.StationId
+                            join b in mybank.tbl_SetParameter
+                            on a.SetParameterId equals b.SetParameterId
+                            join c in mybank.tbl_Parameter 
+                            on b.ParameterId equals c.ParameterId
+                            join d in mybank.tbl_Stations
+                            on b.StationId equals d.StationId
                             where b.ParameterId == id
                             select new
                             {
                                 a.ObserveId,
-                                a.ParameterId,
+                                a.SetParameterId,
                                 b.StationId,
-                                b.ParameterName,
+                                d.StationName,
+                                c.ParameterName,
                                 a.Value,
                                 a.Date
                             }).ToList();
@@ -98,8 +123,14 @@ namespace StaionsParameters.Forms
         private void FillCmb()
         {
             WeatherDbEntities mybank = new WeatherDbEntities();
-            var list = (from x in mybank.tbl_Parameters
-                        select x).ToList();
+            var list = (from x in mybank.tbl_SetParameter
+                        join a in mybank.tbl_Parameter
+                        on x.ParameterId equals a.ParameterId
+                        select new
+                        {
+                           a.ParameterId,
+                           a.ParameterName
+                        }).ToList();
             cmbParameter.DataSource = list;
             cmbParameter.ValueMember = "ParameterId";
             cmbParameter.DisplayMember = "ParameterName";
@@ -123,6 +154,9 @@ namespace StaionsParameters.Forms
             }
 
         }
+
         #endregion
+
+
     }
 }

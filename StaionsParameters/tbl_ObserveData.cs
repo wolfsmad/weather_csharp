@@ -15,10 +15,10 @@ namespace StaionsParameters
     public partial class tbl_ObserveData
     {
         public int ObserveId { get; set; }
-        public int ParameterId { get; set; }
+        public int SetParameterId { get; set; }
         public string Date { get; set; }
         public int Value { get; set; }
     
-        public virtual tbl_Parameters tbl_Parameters { get; set; }
+        public virtual tbl_SetParameter tbl_SetParameter { get; set; }
     }
 }

@@ -27,10 +27,11 @@ namespace StaionsParameters
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tbl_Stations> tbl_Stations { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tbl_ObserveData> tbl_ObserveData { get; set; }
-        public virtual DbSet<tbl_Parameters> tbl_Parameters { get; set; }
+        public virtual DbSet<tbl_Parameter> tbl_Parameter { get; set; }
+        public virtual DbSet<tbl_SetParameter> tbl_SetParameter { get; set; }
+        public virtual DbSet<tbl_Stations> tbl_Stations { get; set; }
     
         public virtual ObjectResult<SP_InfoObserve_Result> SP_InfoObserve(Nullable<int> stationid)
         {

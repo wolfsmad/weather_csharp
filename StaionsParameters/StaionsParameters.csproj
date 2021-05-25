@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\frmAddEditInfoParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddEditInfoParameter.Designer.cs">
+      <DependentUpon>frmAddEditInfoParameter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmAddEditInfoStation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,12 @@
     </Compile>
     <Compile Include="Forms\frmAddEditParameter.Designer.cs">
       <DependentUpon>frmAddEditParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddEditSetParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddEditSetParameter.Designer.cs">
+      <DependentUpon>frmAddEditSetParameter.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmAddEditStation.cs">
       <SubType>Form</SubType>
@@ -88,11 +100,17 @@
     <Compile Include="Forms\frmInfoStation.Designer.cs">
       <DependentUpon>frmInfoStation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmParameters.cs">
+    <Compile Include="Forms\frmParameter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmParameters.Designer.cs">
-      <DependentUpon>frmParameters.cs</DependentUpon>
+    <Compile Include="Forms\frmParameter.Designer.cs">
+      <DependentUpon>frmParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSetParameters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSetParameters.Designer.cs">
+      <DependentUpon>frmSetParameters.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmStations.cs">
       <SubType>Form</SubType>
@@ -117,7 +135,10 @@
     <Compile Include="tbl_ObserveData.cs">
       <DependentUpon>Weather.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_Parameters.cs">
+    <Compile Include="tbl_Parameter.cs">
+      <DependentUpon>Weather.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SetParameter.cs">
       <DependentUpon>Weather.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Stations.cs">
@@ -143,11 +164,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WeatherDbDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\frmAddEditInfoParameter.resx">
+      <DependentUpon>frmAddEditInfoParameter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddEditInfoStation.resx">
       <DependentUpon>frmAddEditInfoStation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddEditParameter.resx">
       <DependentUpon>frmAddEditParameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddEditSetParameter.resx">
+      <DependentUpon>frmAddEditSetParameter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddEditStation.resx">
       <DependentUpon>frmAddEditStation.cs</DependentUpon>
@@ -158,8 +185,11 @@
     <EmbeddedResource Include="Forms\frmInfoStation.resx">
       <DependentUpon>frmInfoStation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmParameters.resx">
-      <DependentUpon>frmParameters.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmParameter.resx">
+      <DependentUpon>frmParameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSetParameters.resx">
+      <DependentUpon>frmSetParameters.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmStations.resx">
       <DependentUpon>frmStations.cs</DependentUpon>

@@ -13,7 +13,7 @@ namespace StaionsParameters.Forms
     public partial class frmAddEditInfoStation : Form
     {
         int stationid;
-        int parameterid;
+        int setparameterid;
         int value;
         int actiontype;
         int observeid;
@@ -22,12 +22,12 @@ namespace StaionsParameters.Forms
 
 
 
-        public frmAddEditInfoStation(int actiontype, int stationid = 0,int observeid = 0, int parameterid = 0, int value = 0, string date = "")
+        public frmAddEditInfoStation(int actiontype, int stationid = 0, int observeid = 0, int setparameterid = 0, int value = 0, string date = "")
         {
-           
+
             if (actiontype == (int)ActionType.Edit)
             {
-                this.parameterid = parameterid;
+                this.setparameterid = setparameterid;
                 this.date = date;
                 this.value = value;
                 this.observeid = observeid;
@@ -39,14 +39,14 @@ namespace StaionsParameters.Forms
 
         private void frmAddEditInfoStation_Load(object sender, EventArgs e)
         {
-             Fillcmb(stationid);
+            Fillcmb(stationid);
             if ((int)ActionType.Edit == actiontype)
             {
                 txtPersianDate.Text = date;
                 txtValue.Value = value;
-                cmbParameterName.SelectedValue = parameterid;
+                cmbParameterName.SelectedValue = setparameterid;
             }
-           
+
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -66,38 +66,44 @@ namespace StaionsParameters.Forms
                     this.Close();
                 }
             }
-            
+
         }
         private void Fillcmb(int stationid)
         {
             WeatherDbEntities mybank = new WeatherDbEntities();
-            var list = (from x in mybank.tbl_Parameters
-                        where x.StationId == stationid
-                        select x).ToList();
+            var list = (from x in mybank.tbl_Parameter
+                        join a in mybank.tbl_SetParameter
+                        on x.ParameterId equals a.ParameterId
+                        where a.StationId == stationid
+                        select new
+                        {
+                            x.ParameterName,
+                            a.SetParameterId
+                        }).ToList();
             cmbParameterName.DataSource = list;
-            cmbParameterName.ValueMember = "ParameterId";
+            cmbParameterName.ValueMember = "SetParameterId";
             cmbParameterName.DisplayMember = "ParameterName";
             cmbParameterName.SelectedIndex = -1;
         }
         private bool Add()
         {
-            try
+             try
             {
-                WeatherDbEntities mybank = new WeatherDbEntities();
-                tbl_ObserveData obj = new tbl_ObserveData()
-                {
-                    Date = txtPersianDate.Text,
-                    ParameterId = (int)cmbParameterName.SelectedValue,
-                    Value = (int)txtValue.Value
-                };
-                mybank.tbl_ObserveData.Add(obj);
-                mybank.SaveChanges();
-                return true;
+            WeatherDbEntities mybank = new WeatherDbEntities();
+            tbl_ObserveData obj = new tbl_ObserveData()
+            {
+                Date = txtPersianDate.Text,
+                SetParameterId = (int)cmbParameterName.SelectedValue,
+                Value = (int)txtValue.Value
+            };
+            mybank.tbl_ObserveData.Add(obj);
+            mybank.SaveChanges();
+            return true;
             }
-            catch (Exception)
-            {
+             catch (Exception)
+             {
                 return false;
-            }
+             }
         }
         private bool Edit(int observeid)
         {
@@ -107,9 +113,9 @@ namespace StaionsParameters.Forms
                 var itemEdit = (from x in mybank.tbl_ObserveData
                                 where x.ObserveId == observeid
                                 select x).SingleOrDefault();
-                itemEdit.ParameterId =(int) cmbParameterName.SelectedValue;
+                itemEdit.SetParameterId = (int)cmbParameterName.SelectedValue;
                 itemEdit.Date = txtPersianDate.Text;
-                itemEdit.Value =(int) txtValue.Value;
+                itemEdit.Value = (int)txtValue.Value;
                 mybank.SaveChanges();
                 return true;
             }

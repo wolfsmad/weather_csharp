@@ -1,6 +1,6 @@
 ﻿namespace StaionsParameters.Forms
 {
-    partial class frmParameters
+    partial class frmSetParameters
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParameters));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSetParameters));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbStations = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.grdParameter = new System.Windows.Forms.DataGridView();
-            this.parameterIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.parameterNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.SetParameterId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.parameterIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.parameterNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdParameter)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +59,7 @@
             this.groupBox1.Size = new System.Drawing.Size(400, 302);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "خصوصیات";
+            this.groupBox1.Text = "پارامتر";
             // 
             // cmbStations
             // 
@@ -87,6 +88,7 @@
             this.grdParameter.BackgroundColor = System.Drawing.Color.White;
             this.grdParameter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdParameter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SetParameterId,
             this.parameterIdDataGridViewTextBoxColumn,
             this.parameterNameDataGridViewTextBoxColumn});
             this.grdParameter.Location = new System.Drawing.Point(6, 82);
@@ -94,22 +96,6 @@
             this.grdParameter.ReadOnly = true;
             this.grdParameter.Size = new System.Drawing.Size(383, 177);
             this.grdParameter.TabIndex = 4;
-            // 
-            // parameterIdDataGridViewTextBoxColumn
-            // 
-            this.parameterIdDataGridViewTextBoxColumn.DataPropertyName = "ParameterId";
-            this.parameterIdDataGridViewTextBoxColumn.HeaderText = "شناسه";
-            this.parameterIdDataGridViewTextBoxColumn.Name = "parameterIdDataGridViewTextBoxColumn";
-            this.parameterIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.parameterIdDataGridViewTextBoxColumn.Width = 75;
-            // 
-            // parameterNameDataGridViewTextBoxColumn
-            // 
-            this.parameterNameDataGridViewTextBoxColumn.DataPropertyName = "ParameterName";
-            this.parameterNameDataGridViewTextBoxColumn.HeaderText = "نام خصوصیت";
-            this.parameterNameDataGridViewTextBoxColumn.Name = "parameterNameDataGridViewTextBoxColumn";
-            this.parameterNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.parameterNameDataGridViewTextBoxColumn.Width = 300;
             // 
             // btnEdit
             // 
@@ -144,7 +130,31 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // frmParameters
+            // SetParameterId
+            // 
+            this.SetParameterId.DataPropertyName = "SetParameterId";
+            this.SetParameterId.HeaderText = "SetParameterId";
+            this.SetParameterId.Name = "SetParameterId";
+            this.SetParameterId.ReadOnly = true;
+            this.SetParameterId.Visible = false;
+            // 
+            // parameterIdDataGridViewTextBoxColumn
+            // 
+            this.parameterIdDataGridViewTextBoxColumn.DataPropertyName = "ParameterId";
+            this.parameterIdDataGridViewTextBoxColumn.HeaderText = "شناسه";
+            this.parameterIdDataGridViewTextBoxColumn.Name = "parameterIdDataGridViewTextBoxColumn";
+            this.parameterIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.parameterIdDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // parameterNameDataGridViewTextBoxColumn
+            // 
+            this.parameterNameDataGridViewTextBoxColumn.DataPropertyName = "ParameterName";
+            this.parameterNameDataGridViewTextBoxColumn.HeaderText = "نام پارامتر";
+            this.parameterNameDataGridViewTextBoxColumn.Name = "parameterNameDataGridViewTextBoxColumn";
+            this.parameterNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.parameterNameDataGridViewTextBoxColumn.Width = 300;
+            // 
+            // frmSetParameters
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -156,9 +166,9 @@
             this.Margin = new System.Windows.Forms.Padding(7);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmParameters";
+            this.Name = "frmSetParameters";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "خصوصیات ایستگاه ها";
+            this.Text = "تخصیص پارامتر به ایستگاه";
             this.Load += new System.EventHandler(this.frmParameters_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -171,12 +181,13 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView grdParameter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn parameterIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn parameterNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ComboBox cmbStations;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SetParameterId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn parameterIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn parameterNameDataGridViewTextBoxColumn;
     }
 }

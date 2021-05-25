@@ -37,7 +37,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.observeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParameterId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SetParameterId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.parameterNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,7 +92,7 @@
             this.grdInfoStation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdInfoStation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.observeIdDataGridViewTextBoxColumn,
-            this.ParameterId,
+            this.SetParameterId,
             this.StationId,
             this.parameterNameDataGridViewTextBoxColumn,
             this.ValueDataGridViewTextBoxColumn,
@@ -144,14 +144,14 @@
             this.observeIdDataGridViewTextBoxColumn.ReadOnly = true;
             this.observeIdDataGridViewTextBoxColumn.Width = 75;
             // 
-            // ParameterId
+            // SetParameterId
             // 
-            this.ParameterId.DataPropertyName = "ParameterId";
-            this.ParameterId.HeaderText = "ParameterId";
-            this.ParameterId.Name = "ParameterId";
-            this.ParameterId.ReadOnly = true;
-            this.ParameterId.Visible = false;
-            this.ParameterId.Width = 5;
+            this.SetParameterId.DataPropertyName = "SetParameterId";
+            this.SetParameterId.HeaderText = "SetParameterId";
+            this.SetParameterId.Name = "SetParameterId";
+            this.SetParameterId.ReadOnly = true;
+            this.SetParameterId.Visible = false;
+            this.SetParameterId.Width = 5;
             // 
             // StationId
             // 
@@ -165,7 +165,7 @@
             // parameterNameDataGridViewTextBoxColumn
             // 
             this.parameterNameDataGridViewTextBoxColumn.DataPropertyName = "ParameterName";
-            this.parameterNameDataGridViewTextBoxColumn.HeaderText = "نام خصوصیت";
+            this.parameterNameDataGridViewTextBoxColumn.HeaderText = "نام پارامتر";
             this.parameterNameDataGridViewTextBoxColumn.Name = "parameterNameDataGridViewTextBoxColumn";
             this.parameterNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.parameterNameDataGridViewTextBoxColumn.Width = 125;
@@ -217,7 +217,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn observeIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ParameterId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SetParameterId;
         private System.Windows.Forms.DataGridViewTextBoxColumn StationId;
         private System.Windows.Forms.DataGridViewTextBoxColumn parameterNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValueDataGridViewTextBoxColumn;

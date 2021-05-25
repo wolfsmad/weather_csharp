@@ -10,105 +10,137 @@ using System.Windows.Forms;
 
 namespace StaionsParameters.Forms
 {
-    
     public partial class frmAddEditParameter : Form
     {
-
-        int id;
-        string name;
-        int actionType;
-        public frmAddEditParameter(int id,int actionType, string name ="")
+        int actiontype;
+        int parameterid;
+        string parameterName;
+        public frmAddEditParameter(int actiontype,int parameterid =0,string parameterName = "" )
         {
+            this.actiontype = actiontype;
+            this.parameterid = parameterid;
+            this.parameterName = parameterName;
             InitializeComponent();
-            this.id = id;
-            this.name = name;
-            this.actionType = actionType;
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void frmAddEditParameter_Load(object sender, EventArgs e)
         {
-            if (actionType == (int)ActionType.Edit)
+            if ((int)ActionType.Edit == actiontype)
             {
-                txtParameterName.Text = name;
+                txtParamterName.Text = parameterName;
             }
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (txtParameterName.Text.Trim().Length < 2 )
+            if (txtParamterName.Text.Length < 2)
             {
-                MessageBox.Show("Test");
+                MessageBox.Show("نام پارامتر نامعتبر می باشد.", "خطا", MessageBoxButtons.OK);
                 return;
             }
-            if (actionType == (int)ActionType.Insert)
+            if (MessageBox.Show("آیا از ثبت اطلاعات اطمینان دارید؟", "پیغام", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (AddParameter(id))
+                if (!CheckDuplicate(txtParamterName.Text))
                 {
-                  this.Close();
+                    MessageBox.Show("نام پارامتر تکراری می باشد", "خطا", MessageBoxButtons.OK);
+                    return;
+                }
+                if (parameterid != 0)
+                {
+                    //Edit
+                    if (Edit(parameterid))
+                    {
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("عملیات ناموفق به پایان رسید", "خطا", MessageBoxButtons.OK);
+                        return;
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("عملیات ناموفق");
-                }
-            }
-            else
-            {
-                //Edit
+                    //insert
 
-                if (EditParameter(id))
-                {
-                   // return;
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("عملیات ناموفق");
+                    if (Add())
+                    {
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("عملیات ناموفق به پایان رسید", "خطا", MessageBoxButtons.OK);
+                        return;
+                    }
+
                 }
             }
+        }
+        private void btnBack_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
 
         }
-        private bool AddParameter(int id)
+        #region Methods
+
+        private bool Add()
         {
             try
             {
                 WeatherDbEntities mybank = new WeatherDbEntities();
-                tbl_Parameters obj = new tbl_Parameters()
+                tbl_Parameter obj = new tbl_Parameter()
                 {
-                    ParameterName = txtParameterName.Text,
-                    StationId = id
+                    ParameterName = txtParamterName.Text
                 };
-                mybank.tbl_Parameters.Add(obj);
+                mybank.tbl_Parameter.Add(obj);
                 mybank.SaveChanges();
                 return true;
             }
             catch (Exception)
             {
-
                 return false;
             }
+
         }
-        private bool EditParameter(int id)
+        private bool Edit(int id)
         {
             try
             {
                 WeatherDbEntities mybank = new WeatherDbEntities();
-                var Edit = (from x in mybank.tbl_Parameters
-                            where x.ParameterId == id
-                            select x).SingleOrDefault();
-                Edit.ParameterName = txtParameterName.Text;
-                mybank.SaveChanges(); 
+                var listEdit = (from x in mybank.tbl_Parameter
+                                where x.ParameterId == id
+                                select x).FirstOrDefault();
+                listEdit.ParameterName = txtParamterName.Text;
+                mybank.SaveChanges();
                 return true;
             }
             catch (Exception)
             {
-
-                return false;   
+                return false;
             }
         }
+        private bool CheckDuplicate(string name)
+        {
+            try
+            {
+                WeatherDbEntities mybank = new WeatherDbEntities();
+
+                var checklist = (from x in mybank.tbl_Parameter
+                                 where x.ParameterName == name
+                                 select x).Count();
+                if (checklist > 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        #endregion
+
+      
     }
 }

@@ -12,16 +12,16 @@ namespace StaionsParameters
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_Stations
+    public partial class tbl_Parameter
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbl_Stations()
+        public tbl_Parameter()
         {
             this.tbl_SetParameter = new HashSet<tbl_SetParameter>();
         }
     
-        public int StationId { get; set; }
-        public string StationName { get; set; }
+        public int ParameterId { get; set; }
+        public string ParameterName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_SetParameter> tbl_SetParameter { get; set; }

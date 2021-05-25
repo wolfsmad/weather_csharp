@@ -1,30 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="WeatherDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="tbl_Stations">
-    <Key>
-      <PropertyRef Name="StationId" />
-    </Key>
-    <Property Name="StationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StationName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="tbl_Parameters" Relationship="WeatherDbModel.FK_tbl_Parameters_tbl_Stations" FromRole="tbl_Stations" ToRole="tbl_Parameters" />
-  </EntityType>
   <EntityContainer Name="WeatherDbEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="tbl_Stations" EntityType="Self.tbl_Stations" />
-    <EntitySet Name="sysdiagrams" EntityType="WeatherDbModel.sysdiagram" />
-    <EntitySet Name="tbl_ObserveData" EntityType="WeatherDbModel.tbl_ObserveData" />
-    <EntitySet Name="tbl_Parameters" EntityType="WeatherDbModel.tbl_Parameters" />
-    <AssociationSet Name="FK_tbl_ObserveData_tbl_Parameters" Association="WeatherDbModel.FK_tbl_ObserveData_tbl_Parameters">
-      <End Role="tbl_Parameters" EntitySet="tbl_Parameters" />
-      <End Role="tbl_ObserveData" EntitySet="tbl_ObserveData" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbl_Parameters_tbl_Stations" Association="WeatherDbModel.FK_tbl_Parameters_tbl_Stations">
-      <End Role="tbl_Stations" EntitySet="tbl_Stations" />
-      <End Role="tbl_Parameters" EntitySet="tbl_Parameters" />
-    </AssociationSet>
     <FunctionImport Name="SP_InfoObserve" ReturnType="Collection(WeatherDbModel.SP_InfoObserve_Result)">
       <Parameter Name="stationid" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="sysdiagrams" EntityType="WeatherDbModel.sysdiagram" />
+    <EntitySet Name="tbl_ObserveData" EntityType="WeatherDbModel.tbl_ObserveData" />
+    <EntitySet Name="tbl_Parameter" EntityType="WeatherDbModel.tbl_Parameter" />
+    <EntitySet Name="tbl_SetParameter" EntityType="WeatherDbModel.tbl_SetParameter" />
+    <EntitySet Name="tbl_Stations" EntityType="WeatherDbModel.tbl_Stations" />
+    <AssociationSet Name="FK_tbl_ObserveData_tbl_SetParameter" Association="WeatherDbModel.FK_tbl_ObserveData_tbl_SetParameter">
+      <End Role="tbl_SetParameter" EntitySet="tbl_SetParameter" />
+      <End Role="tbl_ObserveData" EntitySet="tbl_ObserveData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_SetParameter_tbl_Parameter" Association="WeatherDbModel.FK_tbl_SetParameter_tbl_Parameter">
+      <End Role="tbl_Parameter" EntitySet="tbl_Parameter" />
+      <End Role="tbl_SetParameter" EntitySet="tbl_SetParameter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_SetParameter_tbl_Stations" Association="WeatherDbModel.FK_tbl_SetParameter_tbl_Stations">
+      <End Role="tbl_Stations" EntitySet="tbl_Stations" />
+      <End Role="tbl_SetParameter" EntitySet="tbl_SetParameter" />
+    </AssociationSet>
   </EntityContainer>
+  <ComplexType Name="SP_InfoObserve_Result">
+    <Property Type="String" Name="StationName" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="StationId" Nullable="false" />
+    <Property Type="Int32" Name="ParameterId" Nullable="false" />
+    <Property Type="String" Name="ParameterName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Date" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="ObserveId" Nullable="false" />
+    <Property Type="Int32" Name="Value" Nullable="false" />
+  </ComplexType>
   <EntityType Name="sysdiagram">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -40,52 +46,72 @@
       <PropertyRef Name="ObserveId" />
     </Key>
     <Property Name="ObserveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ParameterId" Type="Int32" Nullable="false" />
+    <Property Name="SetParameterId" Type="Int32" Nullable="false" />
     <Property Name="Date" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Value" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="tbl_Parameters" Relationship="WeatherDbModel.FK_tbl_ObserveData_tbl_Parameters" FromRole="tbl_ObserveData" ToRole="tbl_Parameters" />
+    <NavigationProperty Name="tbl_SetParameter" Relationship="WeatherDbModel.FK_tbl_ObserveData_tbl_SetParameter" FromRole="tbl_ObserveData" ToRole="tbl_SetParameter" />
   </EntityType>
-  <EntityType Name="tbl_Parameters">
+  <EntityType Name="tbl_Parameter">
     <Key>
       <PropertyRef Name="ParameterId" />
     </Key>
     <Property Name="ParameterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ParameterName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="StationId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="tbl_ObserveData" Relationship="WeatherDbModel.FK_tbl_ObserveData_tbl_Parameters" FromRole="tbl_Parameters" ToRole="tbl_ObserveData" />
-    <NavigationProperty Name="tbl_Stations" Relationship="WeatherDbModel.FK_tbl_Parameters_tbl_Stations" FromRole="tbl_Parameters" ToRole="tbl_Stations" />
+    <Property Name="ParameterName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_SetParameter" Relationship="WeatherDbModel.FK_tbl_SetParameter_tbl_Parameter" FromRole="tbl_Parameter" ToRole="tbl_SetParameter" />
   </EntityType>
-  <Association Name="FK_tbl_ObserveData_tbl_Parameters">
-    <End Type="WeatherDbModel.tbl_Parameters" Role="tbl_Parameters" Multiplicity="1" />
+  <EntityType Name="tbl_SetParameter">
+    <Key>
+      <PropertyRef Name="SetParameterId" />
+    </Key>
+    <Property Name="SetParameterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParameterId" Type="Int32" />
+    <Property Name="StationId" Type="Int32" />
+    <NavigationProperty Name="tbl_ObserveData" Relationship="WeatherDbModel.FK_tbl_ObserveData_tbl_SetParameter" FromRole="tbl_SetParameter" ToRole="tbl_ObserveData" />
+    <NavigationProperty Name="tbl_Parameter" Relationship="WeatherDbModel.FK_tbl_SetParameter_tbl_Parameter" FromRole="tbl_SetParameter" ToRole="tbl_Parameter" />
+    <NavigationProperty Name="tbl_Stations" Relationship="WeatherDbModel.FK_tbl_SetParameter_tbl_Stations" FromRole="tbl_SetParameter" ToRole="tbl_Stations" />
+  </EntityType>
+  <EntityType Name="tbl_Stations">
+    <Key>
+      <PropertyRef Name="StationId" />
+    </Key>
+    <Property Name="StationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StationName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_SetParameter" Relationship="WeatherDbModel.FK_tbl_SetParameter_tbl_Stations" FromRole="tbl_Stations" ToRole="tbl_SetParameter" />
+  </EntityType>
+  <Association Name="FK_tbl_ObserveData_tbl_SetParameter">
+    <End Type="WeatherDbModel.tbl_SetParameter" Role="tbl_SetParameter" Multiplicity="1" />
     <End Type="WeatherDbModel.tbl_ObserveData" Role="tbl_ObserveData" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tbl_Parameters">
-        <PropertyRef Name="ParameterId" />
+      <Principal Role="tbl_SetParameter">
+        <PropertyRef Name="SetParameterId" />
       </Principal>
       <Dependent Role="tbl_ObserveData">
+        <PropertyRef Name="SetParameterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_SetParameter_tbl_Parameter">
+    <End Type="WeatherDbModel.tbl_Parameter" Role="tbl_Parameter" Multiplicity="0..1" />
+    <End Type="WeatherDbModel.tbl_SetParameter" Role="tbl_SetParameter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Parameter">
+        <PropertyRef Name="ParameterId" />
+      </Principal>
+      <Dependent Role="tbl_SetParameter">
         <PropertyRef Name="ParameterId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tbl_Parameters_tbl_Stations">
-    <End Type="WeatherDbModel.tbl_Stations" Role="tbl_Stations" Multiplicity="1" />
-    <End Type="WeatherDbModel.tbl_Parameters" Role="tbl_Parameters" Multiplicity="*" />
+  <Association Name="FK_tbl_SetParameter_tbl_Stations">
+    <End Type="WeatherDbModel.tbl_Stations" Role="tbl_Stations" Multiplicity="0..1" />
+    <End Type="WeatherDbModel.tbl_SetParameter" Role="tbl_SetParameter" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tbl_Stations">
         <PropertyRef Name="StationId" />
       </Principal>
-      <Dependent Role="tbl_Parameters">
+      <Dependent Role="tbl_SetParameter">
         <PropertyRef Name="StationId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <ComplexType Name="SP_InfoObserve_Result">
-    <Property Type="String" Name="StationName" Nullable="false" MaxLength="20" />
-    <Property Type="Int32" Name="StationId" Nullable="false" />
-    <Property Type="Int32" Name="ParameterId" Nullable="false" />
-    <Property Type="String" Name="ParameterName" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="Date" Nullable="false" MaxLength="10" />
-    <Property Type="Int32" Name="ObserveId" Nullable="false" />
-    <Property Type="Int32" Name="Value" Nullable="false" />
-  </ComplexType>
 </Schema>

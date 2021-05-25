@@ -27,7 +27,7 @@ namespace StaionsParameters
 
         private void btnPropertyNew_Click(object sender, EventArgs e)
         {
-            frmParameters frm = new frmParameters();
+            frmSetParameters frm = new frmSetParameters();
             frm.ShowDialog();
         }
 
@@ -40,6 +40,18 @@ namespace StaionsParameters
         private void btnInfoProperty_Click(object sender, EventArgs e)
         {
             frmInfoParameter frm = new frmInfoParameter();
+            frm.ShowDialog();
+        }
+
+        private void btnSetParameter_Click(object sender, EventArgs e)
+        {
+            frmSetParameters frm = new frmSetParameters();
+            frm.ShowDialog();
+        }
+
+        private void btnInsertParameter_Click(object sender, EventArgs e)
+        {
+            frmParameter frm = new frmParameter();
             frm.ShowDialog();
         }
     }
