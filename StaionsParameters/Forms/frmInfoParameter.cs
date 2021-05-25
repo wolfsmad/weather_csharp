@@ -25,6 +25,11 @@ namespace StaionsParameters.Forms
         {
             try
             {
+                if (cmbParameter.SelectedIndex == -1)
+                {
+                    FillGrid(0);
+                    return;
+                }
                 int id = (int)cmbParameter.SelectedValue;
                 FillGrid(id);
             }
@@ -42,8 +47,8 @@ namespace StaionsParameters.Forms
 
             int parameterid = (int)cmbParameter.SelectedValue;
             string ParameterName = cmbParameter.Text;
-            string StationName = grdInfoParameter.CurrentRow.Cells[2].Value.ToString();
-            frmAddEditInfoParameter frm = new frmAddEditInfoParameter((int)ActionType.Insert, parameterid, StationName, ParameterName);
+            //  string StationName = grdInfoParameter.CurrentRow.Cells[2].Value.ToString();
+            frmAddEditInfoParameter frm = new frmAddEditInfoParameter((int)ActionType.Insert, parameterid);
             frm.ShowDialog();
             FillGrid(parameterid);
 
@@ -56,19 +61,22 @@ namespace StaionsParameters.Forms
                 return;
             }
 
-            if (MessageBox.Show("آیا از حذف اطلاعات مورد نظر اطمینان دارید ؟", "پیغام", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show("آیا از ویرایش اطلاعات مورد نظر اطمینان دارید ؟", "پیغام", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 return;
             }
             int parameterid = (int)cmbParameter.SelectedValue;
             int observeid = (int)grdInfoParameter.CurrentRow.Cells[0].Value;
             int stationid = (int)grdInfoParameter.CurrentRow.Cells[1].Value;
+            string date = grdInfoParameter.CurrentRow.Cells[2].Value.ToString();
             int value = (int)grdInfoParameter.CurrentRow.Cells[4].Value;
-            string date = grdInfoParameter.CurrentRow.Cells[5].Value.ToString();
+            int setParameterId = (int)grdInfoParameter.CurrentRow.Cells[5].Value;
 
-            //frmAddEditParameter frm = new frmAddEditParameter((int)ActionType.Edit, stationid: stationid, observeid: observeid, parameterid: parameterid
-            //    , date: date, value: value);
-            //frm.ShowDialog();
+
+            frmAddEditInfoParameter frm = new frmAddEditInfoParameter((int)ActionType.Edit,
+                parameterid,stationid, observeid, setParameterId
+                ,date,value);
+            frm.ShowDialog();
             FillGrid(parameterid);
         }
 
@@ -79,11 +87,11 @@ namespace StaionsParameters.Forms
                 if (MessageBox.Show("آیا از حذف اطلاعات مورد نظر اطمینان دارید ؟", "پیغام", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     int observeid = (int)grdInfoParameter.CurrentRow.Cells[0].Value;
-                    int stationid = (int)cmbParameter.SelectedValue;
+                    int parameterId = (int)cmbParameter.SelectedValue;
                     if (Delete(observeid))
                     {
                         MessageBox.Show("عملیات حذف با موفقیت به پایان رسید", "پیغام");
-                        FillGrid(stationid);
+                        FillGrid(parameterId);
                     }
                     else
                     {
@@ -102,7 +110,7 @@ namespace StaionsParameters.Forms
             var listjoin = (from a in mybank.tbl_ObserveData
                             join b in mybank.tbl_SetParameter
                             on a.SetParameterId equals b.SetParameterId
-                            join c in mybank.tbl_Parameter 
+                            join c in mybank.tbl_Parameter
                             on b.ParameterId equals c.ParameterId
                             join d in mybank.tbl_Stations
                             on b.StationId equals d.StationId
@@ -123,14 +131,14 @@ namespace StaionsParameters.Forms
         private void FillCmb()
         {
             WeatherDbEntities mybank = new WeatherDbEntities();
-            var list = (from x in mybank.tbl_SetParameter
+            var list = (from x in mybank.tbl_SetParameter 
                         join a in mybank.tbl_Parameter
                         on x.ParameterId equals a.ParameterId
                         select new
                         {
-                           a.ParameterId,
-                           a.ParameterName
-                        }).ToList();
+                            x.ParameterId,
+                            a.ParameterName,
+                        }).Distinct().ToList();
             cmbParameter.DataSource = list;
             cmbParameter.ValueMember = "ParameterId";
             cmbParameter.DisplayMember = "ParameterName";

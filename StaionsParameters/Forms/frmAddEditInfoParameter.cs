@@ -15,22 +15,49 @@ namespace StaionsParameters.Forms
         private int actionType;
         private int parameterid;
         private int observeid;
-        private string stationName;
-        private string parameterName;
-        public frmAddEditInfoParameter(int actiontype, int parameterid, string  stationName ,string parameterName,int observeid = 0 )
+        private int stationid;
+        private int setParameterId;
+        private string date = "";
+        private int value = 0;
+        public frmAddEditInfoParameter(int actiontype, int parameterid, int stationid = 0, int observeid = 0,int setParameterId = 0,string date = "",int value = 0)
         {
             this.actionType = actiontype;
             this.parameterid = parameterid;
             this.observeid = observeid;
-            this.stationName = stationName;
-            this.parameterName = parameterName;
+            this.stationid = stationid;
+            this.date = date;
+            this.value = value;
+            this.setParameterId = setParameterId;
             InitializeComponent();
         }
 
         private void frmAddEditInfoParameter_Load(object sender, EventArgs e)
         {
-            lblStationName.Text ="ثبت اطلاعات برای " +  stationName + " در خصوصیت  " + parameterName;
+            FillCmb(parameterid);
+            if ((int)ActionType.Edit == actionType)
+            {
+                txtPersianDate.Text = date;
+                cmbStation.SelectedValue = setParameterId;
+                txtValue.Value = value; 
+            }
         }
+        private void FillCmb(int parameterid)
+        {
+            WeatherDbEntities mybank = new WeatherDbEntities();
+            var list = (from x in mybank.tbl_SetParameter
+                        join a in mybank.tbl_Stations
+                        on x.StationId equals a.StationId
+                        where x.ParameterId ==  parameterid
+                        select new
+                        {
+                            x.SetParameterId,
+                            a.StationName
+                        }).ToList();
+            cmbStation.DataSource = list;
+            cmbStation.DisplayMember = "StationName";
+            cmbStation.ValueMember = "SetParameterId";
+        }
+      
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if ((int)ActionType.Insert == actionType)
@@ -56,16 +83,16 @@ namespace StaionsParameters.Forms
             try
             {
                 WeatherDbEntities mybank = new WeatherDbEntities();
-                tbl_ObserveData obj = new tbl_ObserveData()
-                {
-                    SetParameterId = parameterid,
-                    Date = txtPersianDate.Text,
-                    Value = (int)txtValue.Value,
+            tbl_ObserveData obj = new tbl_ObserveData()
+            {
+                SetParameterId = (int)cmbStation.SelectedValue,
+                Date = txtPersianDate.Text,
+                Value = (int)txtValue.Value,
 
-                };
-                mybank.tbl_ObserveData.Add(obj);
-                mybank.SaveChanges();
-                return true;
+            };
+            mybank.tbl_ObserveData.Add(obj);
+            mybank.SaveChanges();
+            return true;
             }
             catch (Exception)
             {
@@ -81,6 +108,7 @@ namespace StaionsParameters.Forms
                 var itemEdit = (from x in mybank.tbl_ObserveData
                                 where x.ObserveId == observeid
                                 select x).SingleOrDefault();
+                itemEdit.SetParameterId =(int)cmbStation.SelectedValue;
                 itemEdit.Date = txtPersianDate.Text;
                 itemEdit.Value = (int)txtValue.Value;
                 mybank.SaveChanges();

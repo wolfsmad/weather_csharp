@@ -37,9 +37,11 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.observeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StationNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SetParameterId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdInfoParameter)).BeginInit();
             this.SuspendLayout();
@@ -93,9 +95,11 @@
             this.grdInfoParameter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdInfoParameter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.observeIdDataGridViewTextBoxColumn,
+            this.StationId,
             this.DateDataGridViewTextBoxColumn,
             this.StationNameDataGridViewTextBoxColumn,
-            this.ValueDataGridViewTextBoxColumn});
+            this.ValueDataGridViewTextBoxColumn,
+            this.SetParameterId});
             this.grdInfoParameter.Location = new System.Drawing.Point(10, 77);
             this.grdInfoParameter.Name = "grdInfoParameter";
             this.grdInfoParameter.ReadOnly = true;
@@ -146,6 +150,14 @@
             this.observeIdDataGridViewTextBoxColumn.ReadOnly = true;
             this.observeIdDataGridViewTextBoxColumn.Width = 75;
             // 
+            // StationId
+            // 
+            this.StationId.DataPropertyName = "StationId";
+            this.StationId.HeaderText = "StationId";
+            this.StationId.Name = "StationId";
+            this.StationId.ReadOnly = true;
+            this.StationId.Visible = false;
+            // 
             // DateDataGridViewTextBoxColumn
             // 
             this.DateDataGridViewTextBoxColumn.DataPropertyName = "Date";
@@ -167,6 +179,14 @@
             this.ValueDataGridViewTextBoxColumn.HeaderText = "مقدار";
             this.ValueDataGridViewTextBoxColumn.Name = "ValueDataGridViewTextBoxColumn";
             this.ValueDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // SetParameterId
+            // 
+            this.SetParameterId.DataPropertyName = "SetParameterId";
+            this.SetParameterId.HeaderText = "SetParameterId";
+            this.SetParameterId.Name = "SetParameterId";
+            this.SetParameterId.ReadOnly = true;
+            this.SetParameterId.Visible = false;
             // 
             // frmInfoParameter
             // 
@@ -201,8 +221,10 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn observeIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StationId;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StationNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SetParameterId;
     }
 }

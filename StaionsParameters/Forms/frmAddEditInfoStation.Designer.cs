@@ -32,13 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditInfoStation));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtValue = new System.Windows.Forms.NumericUpDown();
             this.txtPersianDate = new BPersianCalender.BPersianCalenderTextBox();
             this.cmbParameterName = new System.Windows.Forms.ComboBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.txtValue = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtValue)).BeginInit();
             this.SuspendLayout();
@@ -74,6 +74,14 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
+            // txtValue
+            // 
+            this.txtValue.Location = new System.Drawing.Point(164, 107);
+            this.txtValue.Name = "txtValue";
+            this.txtValue.Size = new System.Drawing.Size(63, 28);
+            this.txtValue.TabIndex = 9;
+            this.txtValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // txtPersianDate
             // 
             this.txtPersianDate.Location = new System.Drawing.Point(69, 73);
@@ -106,6 +114,7 @@
             this.btnBack.TabIndex = 1;
             this.btnBack.Text = "بازگشت";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // label3
             // 
@@ -139,14 +148,6 @@
             this.btnAdd.Text = "ثبت";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // txtValue
-            // 
-            this.txtValue.Location = new System.Drawing.Point(164, 107);
-            this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(63, 28);
-            this.txtValue.TabIndex = 9;
-            this.txtValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmAddEditInfoStation
             // 
