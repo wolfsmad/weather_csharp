@@ -46,6 +46,11 @@ namespace Weather
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (grdStation.RowCount == 0)
+            {
+                MessageBox.Show("لطفا ابتدا ایستگاه وارد نمائید", "خطا");
+                return;
+            }
             if (MessageBox.Show("آیا از حذف اطلاعات اطمینان دارید؟", "پیغام", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int id = Convert.ToInt32(grdStation.CurrentRow.Cells[0].Value);
@@ -58,9 +63,10 @@ namespace Weather
                     MessageBox.Show("عملیات ناموفق به پایان رسید", " خطا", MessageBoxButtons.OK);
                 }
             }
+
         }
         private void txtSearch_TextChanged(object sender, EventArgs e)
-       {
+        {
             FillGrid(txtSearch.Text);
         }
         #region Functions
@@ -70,6 +76,7 @@ namespace Weather
             var list = (from x in mybank.tbl_Stations
                         where x.StationName.Contains(query)
                         select x).ToList();
+            grdStation.AutoGenerateColumns = false;
             grdStation.DataSource = list;
 
             //    this.tbl_StationsTableAdapter.Fill(this.weatherDbDataSet.tbl_Stations);
